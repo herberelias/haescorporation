@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio - Desarrollador Web</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a6cf7;
+            --dark-color: #111827;
+            --light-color: #f9fafb;
+            --gray-color: #6b7280;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+        }
+        
+        .hero-section {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-padding {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -15px;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .skill-card {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid #eee;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .project-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            background-color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 20px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+        }
+        
+        .project-tag {
+            padding: 5px 10px;
+            background-color: #eef2ff;
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background-color: #374151;
+        }
+        
+        .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-custom:hover {
+            background-color: #3a5ad6;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .progress {
+            height: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .navbar {
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: var(--dark-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="50">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Herber Arnoldo Elias Silva</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">Sobre Mí</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4">Hola, soy Herber Elias </h1>     
+                    
+                <h2 class="h3 mb-4">Desarrollador Web Full Stack</h2>
+                    <p class="lead mb-4">Transformo ideas en aplicaciones web modernas y funcionales. Especializado en crear experiencias digitales atractivas y eficientes.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#projects" class="btn btn-custom">Ver Proyectos</a>
+                        <a href="#contact" class="btn btn-outline-light">Contactarme</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex justify-content-center mt-5 mt-lg-0">
+                    <img src="img/foto.jpg" alt="Foto de perfil" class="img-fluid rounded-circle" style="max-width: 350px; border: 5px solid rgba(255,255,255,0.1)">                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h2 class="section-title">Sobre Mí</h2>
+                    <p class="mb-4">Soy un desarrollador web apasionado en la creación de soluciones web innovadoras. Mi enfoque combina habilidades técnicas sólidas con una comprensión profunda de la experiencia del usuario.</p>
+                    <p class="mb-4">Me especializo en el desarrollo full stack, con experiencia en tecnologías front-end y back-end. Me encanta resolver problemas complejos y convertir ideas en aplicaciones funcionales y estéticamente agradables.</p>
+                    <div class="row mt-5">
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <h5>Nombre:</h5>
+                                <p>Herber Arnoldo Elias Silva</p>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Email:</h5>
+                                <p>herberelias@hotmail.com</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-4">
+                                <h5>Ubicación:</h5>
+                                <p>San Salvador, El Salvador</p>
+                            </div>
+                            <div class="mb-4">
+                                <h5>Disponibilidad:</h5>
+                                <p>Proyectos freelance / Tiempo completo / Remoto</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-custom mt-3">Descargar CV</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="mb-4">
+                        <h4>Experiencia en Desarrollo Front-end</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4>Experiencia en Desarrollo Back-end</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4>Bases de Datos</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4>DevOps</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <h4>Diseño UI/UX</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Mis Habilidades Técnicas</h2>
+                <p class="text-muted">Tecnologías y herramientas con las que trabajo</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="skill-card bg-white">
+                        <div class="skill-icon">
+                            <i class="fab fa-html5"></i>
+                        </div>
+                        <h4>Desarrollo Front-end</h4>
+                        <p>HTML5, CSS3, JavaScript, React, Vue.js, Angular, Bootstrap, Tailwind CSS, SASS</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card bg-white">
+                        <div class="skill-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h4>Desarrollo Back-end</h4>
+                        <p>Node.js, Express, Python, Django, PHP, Laravel, API RESTful</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card bg-white">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Bases de Datos</h4>
+                        <p>MySQL, PostgreSQL, MongoDB, Firebase, Redis</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card bg-white">
+                        <div class="skill-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h4>Herramientas y DevOps</h4>
+                        <p>Git, GitHub, Docker, CI/CD, AWS, Heroku, Vercel, Netlify</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card bg-white">
+                        <div class="skill-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h4>Desarrollo Móvil</h4>
+                        <p>React Native, Flutter, Dart, Diseño Responsivo, Android</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-card bg-white">
+                        <div class="skill-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h4>Diseño</h4>
+                        <p>Figma, Adobe XD, UI/UX, Wireframing, Prototipos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold mb-3">Mis Proyectos</h2>
+                <p class="text-muted">Una selección de mis trabajos más recientes</p>
+            </div>
+            <div class="row">
+                <!-- Proyecto 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/300" alt="Proyecto 1" class="img-fluid w-100">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">React</span>
+                                <span class="project-tag">Node.js</span>
+                                <span class="project-tag">MongoDB</span>
+                            </div>
+                            <h4>Nombre del Proyecto 1</h4>
+                            <p>Descripción breve del proyecto. Explica cuál era el objetivo y qué tecnologías utilizaste para desarrollarlo.</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-custom">Ver Demo</a>
+                                <a href="#" class="btn btn-sm btn-outline-dark">Ver Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/300" alt="Proyecto 2" class="img-fluid w-100">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Vue.js</span>
+                                <span class="project-tag">Express</span>
+                                <span class="project-tag">PostgreSQL</span>
+                            </div>
+                            <h4>Nombre del Proyecto 2</h4>
+                            <p>Descripción breve del proyecto. Explica cuál era el objetivo y qué tecnologías utilizaste para desarrollarlo.</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-custom">Ver Demo</a>
+                                <a href="#" class="btn btn-sm btn-outline-dark">Ver Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/300" alt="Proyecto 3" class="img-fluid w-100">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Angular</span>
+                                <span class="project-tag">Firebase</span>
+                                <span class="project-tag">Bootstrap</span>
+                            </div>
+                            <h4>Nombre del Proyecto 3</h4>
+                            <p>Descripción breve del proyecto. Explica cuál era el objetivo y qué tecnologías utilizaste para desarrollarlo.</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-custom">Ver Demo</a>
+                                <a href="#" class="btn btn-sm btn-outline-dark">Ver Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/300" alt="Proyecto 4" class="img-fluid w-100">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">WordPress</span>
+                                <span class="project-tag">PHP</span>
+                                <span class="project-tag">MySQL</span>
+                            </div>
+                            <h4>Nombre del Proyecto 4</h4>
+                            <p>Descripción breve del proyecto. Explica cuál era el objetivo y qué tecnologías utilizaste para desarrollarlo.</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-custom">Ver Demo</a>
+                                <a href="#" class="btn btn-sm btn-outline-dark">Ver Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/300" alt="Proyecto 5" class="img-fluid w-100">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">React Native</span>
+                                <span class="project-tag">Redux</span>
+                                <span class="project-tag">AWS</span>
+                            </div>
+                            <h4>Nombre del Proyecto 5</h4>
+                            <p>Descripción breve del proyecto. Explica cuál era el objetivo y qué tecnologías utilizaste para desarrollarlo.</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-custom">Ver Demo</a>
+                                <a href="#" class="btn btn-sm btn-outline-dark">Ver Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Proyecto 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card">
+                        <img src="/api/placeholder/400/300" alt="Proyecto 6" class="img-fluid w-100">
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Django</span>
+                                <span class="project-tag">Docker</span>
+                            </div>
+                            <h4>Nombre del Proyecto 6</h4>
+                            <p>Descripción breve del proyecto. Explica cuál era el objetivo y qué tecnologías utilizaste para desarrollarlo.</p>
+                            <div class="d-flex gap-2 mt-3">
+                                <a href="#" class="btn btn-sm btn-custom">Ver Demo</a>
+                                <a href="#" class="btn btn-sm btn-outline-dark">Ver Código</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary">Ver Más Proyectos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-title">Contáctame</h2>
+                    <p class="mb-4">¿Tienes un proyecto en mente? Estoy disponible para trabajar en proyectos freelance o puestos a tiempo completo. ¡Hablemos sobre cómo puedo ayudarte!</p>
+                    <div class="contact-info">
+                        <div class="d-flex mb-3">
+                            <div class="me-3">
+                                <i class="fas fa-map-marker-alt text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Ubicación</h5>
+                                <p>San Salvador, El Salvador</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mb-3">
+                            <div class="me-3">
+                                <i class="fas fa-envelope text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Email</h5>
+                                <p>herberelias@hotmail.com</p>
+                            </div>
+                        </div>
+                        <div class="d-flex">
+                            <div class="me-3">
+                                <i class="fas fa-phone text-primary fs-4"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Teléfono</h5>
+                                <p>+503 72155700</p>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-form bg-white p-4 p-md-5 rounded shadow">
+                        <h3 class="mb-4">Envíame un mensaje</h3>
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Tu Nombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Tu Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Asunto">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Tu Mensaje" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3 class="h5">TuNombre</h3>
+                    <p class="text-muted">Desarrollador Web Full Stack</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2025 Todos los derechos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Cambiar el fondo del navbar al hacer scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Activar los tooltips de Bootstrap
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+        
+        // Animación de escritura para el texto del héroe
+        document.addEventListener('DOMContentLoaded', function() {
+            const text = document.querySelector('.hero-section h1');
+            if (text) {
+                const originalText = text.innerHTML;
+                text.innerHTML = '';
+                let index = 0;
+                
+                function writeText() {
+                    if (index < originalText.length) {
+                        text.innerHTML += originalText.charAt(index);
+                        index++;
+                        setTimeout(writeText, 100);
+                    }
+                }
+                
+                setTimeout(writeText, 500);
+            }
+        });
+    </script>
+</body>
+</html>
